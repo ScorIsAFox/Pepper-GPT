@@ -1,7 +1,5 @@
 # Pepper-GPT (Project 91)
 
-[TOC]
-
 ## Project Name
 
 Investigating the Integration of Pepper Robot and ChatGPT: A Study on Enhancing User Experience and Engagement.
