@@ -1,0 +1,37 @@
+mkdir -p ~/naoqi
+cd ~/naoqi
+wget https://community-static.aldebaran.com/resources/2.1.4.13/sdk-c%2B%2B/naoqi-sdk-2.1.4.13-linux64.tar.gz
+wget https://community-static.aldebaran.com/resources/2.1.4.13/sdk-python/pynaoqi-python2.7-2.1.4.13-linux64.tar.gz # if you are using 64-bit
+tar xzf naoqi-sdk-2.1.4.13-linux64.tar.gz
+tar xzf pynaoqi-python2.7-2.1.4.13-linux64.tar.gz # if you are using 64-bit
+
+
+# ////////////// Above commands are all in the naoqi.sh file ///////////////////////////////
+
+source ~/naoqi.sh # Install naoqi SDK
+
+~/naoqi/naoqi-sdk-2.1.4.13-linux64/naoqi # Check the installation by executing NAOqi
+"""
+You should see an output similar to:
+
+Starting NAOqi version 2.1.4.13
+.
+NAOqi is listening on 0.0.0.0:9559
+.
+.
+NAOqi is ready...
+Press CTRL-C to exit.
+"""
+gedit ~/.bashrc # config the environment, write following content at the end of the document
+
+# naoqi environment configuration
+alias python='/usr/bin/python2.7'
+export PYTHONPATH=${PYTHONPATH}:~/naoqi/pynaoqi-python2.7-2.1.4.13-linux64
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:~/naoqi/pynaoqi-python2.7-2.1.4.13-linux64
+
+source ~/.bashrc # activate the new configuration
+
+"""
+if there is an error of "ImportError:libboost_regex.so.1.55.0:cannot open shared object file: No such file or directory "
+use the command "locate libboost_regex.so.1.55.0" find its path
+open the path, find this file and copy it to the LD_LIBRARY_PATH
